@@ -157,6 +157,10 @@ public class ProductDTO {
 	public void setSizes(List<SizeModel> sizes) {
 		this.sizes = sizes;
 	}
-	
+	public void test () {
+		System.out.println("son");
+	}
+	//test git
+	//testgit1137
 	
 }
