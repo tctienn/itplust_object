@@ -17,14 +17,14 @@ public class SizeSevice {
 			+ "JOIN product_size pc ON c.id = pc.id_size\r\n"
 			+ "WHERE pc.id_product = ?;\r\n";
 	public SizeSevice() {
-		connection = MyConnection.getConnection();
+//		connection = MyConnection.getConnection();
 	}
 	
 	public List<SizeModel> findByIdProduct(Integer idProduct){
 		List<SizeModel> sizes = new ArrayList<>();
 		connection = MyConnection.getConnection();
 		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
+		try (Connection connection = MyConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
 			preparedStatement.setInt(1, idProduct);
 			ResultSet rs = preparedStatement.executeQuery();			
 			while (rs.next()) {

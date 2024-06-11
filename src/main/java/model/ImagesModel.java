@@ -11,7 +11,7 @@ public class ImagesModel {
 		this.url = url;
 	}
 	public ImagesModel() {
-		super();
+		
 	}
 	public Integer getId() {
 		return id;

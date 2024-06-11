@@ -21,35 +21,35 @@ public class CatergoryService {
 			+ "WHERE pc.id_product = ?;\r\n";
 			
 	public CatergoryService() {
-		connection = MyConnection.getConnection();
+		
 	}
 	
 	public List<CatergoryModel> getCatergorys(){
 		List<CatergoryModel> catergorys = new ArrayList<>();
-		connection = MyConnection.getConnection();
 		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CATERGORY);) {
+		// Sử dụng try-with-resources cho Connection và PreparedStatement
+		try (Connection connection = MyConnection.getConnection();
+		     PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CATERGORY)) {
 			ResultSet rs = preparedStatement.executeQuery();		
 			while (rs.next()) {
-				 Integer id = rs.getInt("id");
-				 String name = rs.getString("name");
-				 String img = rs.getString("img");
+				Integer id = rs.getInt("id");
+				String name = rs.getString("name");
+				String img = rs.getString("img");
 				
-				 catergorys.add(new CatergoryModel(id, name, img));
+				catergorys.add(new CatergoryModel(id, name, img));
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return catergorys;
-		
 	}
 	
 	public List<CatergoryModel> findByIdProduct(Integer idProduct ){
 		List<CatergoryModel> catergorys = new ArrayList<>();
-		connection = MyConnection.getConnection();
+
 		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
+		try (Connection connection = MyConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
 			preparedStatement.setInt(1, idProduct);
 			ResultSet rs = preparedStatement.executeQuery();			
 			while (rs.next()) {

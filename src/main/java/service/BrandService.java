@@ -9,21 +9,21 @@ import config.MyConnection;
 import model.BrandModel;
 
 public class BrandService {
-	private Connection connection;
+//	private Connection connection;
 	private static final String FIND_BY_IDPRODUCT= "SELECT b.id, b.name , b.img \r\n"
 			+ "FROM brands b\r\n"
 			+ "JOIN product p ON b.id = p.brand\r\n"
 			+ "WHERE p.id = ?;";
 	public BrandService() {
-		connection = MyConnection.getConnection();
+//		connection = MyConnection.getConnection();
 	}
 	
 	
 	public BrandModel findByIdProduct(Integer idProduct){
 		BrandModel brand = new BrandModel();
-		connection = MyConnection.getConnection();
+//		connection = MyConnection.getConnection();
 		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
+		try (Connection connection = MyConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
 			preparedStatement.setInt(1, idProduct);
 			ResultSet rs = preparedStatement.executeQuery();			
 			if (rs.next()) { 

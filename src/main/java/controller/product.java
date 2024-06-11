@@ -29,9 +29,9 @@ public class product extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		ProductService productservice = new ProductService();
+		ProductService productservice = new ProductService(); 
 		System.out.println(productservice.getProductPage(1, 2).size());
 		request.setAttribute("products", productservice.getProductPage(1, 2) );
 		request.getRequestDispatcher("user/index2.jsp").forward(request, response);

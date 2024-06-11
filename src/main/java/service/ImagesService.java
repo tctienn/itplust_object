@@ -15,14 +15,14 @@ public class ImagesService {
 	private Connection connection;
 	private static final String FIND_BY_IDPRODUCT= "SELECT * from images where id_product = ? ";
 	public ImagesService() {
-		connection = MyConnection.getConnection();
+//		connection = MyConnection.getConnection();
 	}
 	
 	public List<ImagesModel> findByIdProduct(Integer idParam){
 		List<ImagesModel> images = new ArrayList<>();
 		connection = MyConnection.getConnection();
 		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
+		try (Connection connection = MyConnection.getConnection();PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_IDPRODUCT);) {
 			preparedStatement.setInt(1, idParam);
 			ResultSet rs = preparedStatement.executeQuery();			
 			while (rs.next()) {

@@ -26,13 +26,13 @@ public class ProductService {
 	
 
 	public ProductService() {
-		connection = MyConnection.getConnection();
+//		connection = MyConnection.getConnection();
 
 		
 	}
 	public List<ProductDTO> getProductPage(int page, int size) {
 		List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
-		try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PRODUCT_PAGE);) {
+		try ( Connection connection = MyConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PRODUCT_PAGE);) {
 			preparedStatement.setInt(1, (page-1)*size);
 			preparedStatement.setInt(2, size);
 			ResultSet rs = preparedStatement.executeQuery();		
