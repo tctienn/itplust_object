@@ -34,7 +34,7 @@ public class product extends HttpServlet {
 		ProductService productservice = new ProductService();
 		System.out.println(productservice.getProductPage(1, 2).size());
 		request.setAttribute("products", productservice.getProductPage(1, 2) );
-		request.getRequestDispatcher("product/Home.jsp").forward(request, response);
+		request.getRequestDispatcher("user/index2.jsp").forward(request, response);
 	}
 
 	/**
