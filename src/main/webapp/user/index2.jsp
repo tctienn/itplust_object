@@ -4,6 +4,7 @@
       <html lang="en">
 
       <head>
+         <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
          <!-- basic -->
          <meta charset="utf-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +24,10 @@
          <!-- Responsive-->
          <link rel="stylesheet" href="http://localhost:8080/baocao/user/css/responsive.css">
          <!-- fevicon -->
-         <link rel="icon" href="http://localhost:8080/baocao/user/images/fevicon.png" type="http://localhost:8080/baocao/user/image/gif" />
+         <link rel="icon" href="http://localhost:8080/baocao/user/images/fevicon.png"
+            type="http://localhost:8080/baocao/user/image/gif" />
          <!-- Scrollbar Custom CSS -->
-         <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+         <link rel="stylesheet" href="http://localhost:8080/baocao/user/css/jquery.mCustomScrollbar.min.css">
          <!-- Tweaks for older IEs-->
          <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
          <!-- fonts -->
@@ -55,12 +57,23 @@
                   </div>
                   <span class="toggle_icon" onclick="openNav()"><img
                         src="http://localhost:8080/baocao/user/images/toggle-icon.png"></span>
-                  <a class="logo" href="index.html"><img src="http://localhost:8080/baocao/user/images/logo.png"></a></a>
+                  <a class="logo" href="index.html"><img
+                        src="http://localhost:8080/baocao/user/images/logo.png"></a></a>
                   <form class="form-inline ">
                      <div class="login_text">
                         <ul>
                            <li><a href="#"><img src="http://localhost:8080/baocao/user/images/user-icon.png"></a></li>
-                           <li><a href="#"><img src="http://localhost:8080/baocao/user/images/bag-icon.png"></a></li>
+                           <li>
+                              <a href="#">
+                                 <div style="position: relative !important;">
+                                    <iconify-icon icon="ph:bag" width="32" height="32"
+                                       style="color: black"></iconify-icon>
+                                    <span
+                                       style="position: absolute !important; width: 25px; border-radius: 50% ; height: 25px; text-align: center; background-color: rgb(160, 160, 160); bottom: 0 !important; right: 0;">
+                                       ${cartItemSize}</span>
+                                 </div>
+                              </a>
+                           </li>
                            <li><a href="#"><img src="http://localhost:8080/baocao/user/images/search-icon.png"></a></li>
                         </ul>
                      </div>
@@ -83,7 +96,8 @@
                               <div class="read_bt"><a href="#">Buy Now</a></div>
                            </div>
                            <div class="col-sm-6">
-                              <div class="banner_img"><img src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
+                              <div class="banner_img"><img
+                                    src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
                            </div>
                         </div>
                      </div>
@@ -98,7 +112,8 @@
                               <div class="read_bt"><a href="#">Buy Now</a></div>
                            </div>
                            <div class="col-sm-6">
-                              <div class="banner_img"><img src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
+                              <div class="banner_img"><img
+                                    src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
                            </div>
                         </div>
                      </div>
@@ -113,7 +128,8 @@
                               <div class="read_bt"><a href="#">Buy Now</a></div>
                            </div>
                            <div class="col-sm-6">
-                              <div class="banner_img"><img src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
+                              <div class="banner_img"><img
+                                    src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
                            </div>
                         </div>
                      </div>
@@ -128,7 +144,8 @@
                               <div class="read_bt"><a href="#">Buy Now</a></div>
                            </div>
                            <div class="col-sm-6">
-                              <div class="banner_img"><img src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
+                              <div class="banner_img"><img
+                                    src="http://localhost:8080/baocao/user/images/banner-img.png"></div>
                            </div>
                         </div>
                      </div>
@@ -149,203 +166,28 @@
                </div>
                <div class="product_section_2 layout_padding">
                   <div class="row">
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-1.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
+                     <c:forEach items="${products}" var="p" varStatus="ps">
+                        <div class="col-lg-3 col-sm-6">
+                           <div class="product_box">
+                              <h4 class="bursh_text">${p.name}</h4>
+                              <p class="lorem_text">${p.motaNgan}</p>
+                              <img src="${p.mainImg}" class="image_1">
+                              <div class="btn_main">
+                                 <div class="buy_bt">
+                                    <ul>
+                                       <!-- <li class="active"><a href="#">Buy Now</a></li> -->
+                                       <li><a href="#">Buy Now</a></li>
+                                    </ul>
+                                 </div>
+                                 <h3 class="price_text">${p.price}</h3>
                               </div>
-                              <h3 class="price_text">Price $30</h3>
                            </div>
                         </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-2.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-3.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-4.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
+                     </c:forEach>
+
                   </div>
-                  <div class="row">
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-5.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-6.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-7.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-8.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-9.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-10.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-11.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-3 col-sm-6">
-                        <div class="product_box">
-                           <h4 class="bursh_text">Beauty Bursh</h4>
-                           <p class="lorem_text">incididunt ut labore et dolore magna aliqua. Ut enim </p>
-                           <img src="http://localhost:8080/baocao/user/images/img-12.png" class="image_1">
-                           <div class="btn_main">
-                              <div class="buy_bt">
-                                 <ul>
-                                    <li class="active"><a href="#">Buy Now</a></li>
-                                    <li><a href="#">Buy Now</a></li>
-                                 </ul>
-                              </div>
-                              <h3 class="price_text">Price $30</h3>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+
+
                   <div class="seemore_bt"><a href="#">See More</a></div>
                </div>
             </div>
@@ -389,7 +231,8 @@
                         <div class="client_section_2">
                            <div class="client_main">
                               <div class="client_left">
-                                 <div class="client_img"><img src="http://localhost:8080/baocao/user/images/client-img.png"></div>
+                                 <div class="client_img"><img
+                                       src="http://localhost:8080/baocao/user/images/client-img.png"></div>
                               </div>
                               <div class="client_right">
                                  <h3 class="name_text">Jonyro</h3>
@@ -404,7 +247,8 @@
                         <div class="client_section_2">
                            <div class="client_main">
                               <div class="client_left">
-                                 <div class="client_img"><img src="http://localhost:8080/baocao/user/images/client-img.png"></div>
+                                 <div class="client_img"><img
+                                       src="http://localhost:8080/baocao/user/images/client-img.png"></div>
                               </div>
                               <div class="client_right">
                                  <h3 class="name_text">Jonyro</h3>
@@ -419,7 +263,8 @@
                         <div class="client_section_2">
                            <div class="client_main">
                               <div class="client_left">
-                                 <div class="client_img"><img src="http://localhost:8080/baocao/user/images/client-img.png"></div>
+                                 <div class="client_img"><img
+                                       src="http://localhost:8080/baocao/user/images/client-img.png"></div>
                               </div>
                               <div class="client_right">
                                  <h3 class="name_text">Jonyro</h3>
@@ -471,7 +316,8 @@
          <!-- footer section start -->
          <div class="footer_section layout_padding">
             <div class="container">
-               <div class="footer_logo"><a href="index.html"><img src="http://localhost:8080/baocao/user/images/footer-logo.png"></a></div>
+               <div class="footer_logo"><a href="index.html"><img
+                        src="http://localhost:8080/baocao/user/images/footer-logo.png"></a></div>
                <div class="contact_section_2">
                   <div class="row">
                      <div class="col-sm-4">
@@ -500,7 +346,8 @@
                         </div>
                      </div>
                      <div class="col-sm-4">
-                        <div class="footer_logo_1"><a href="index.html"><img src="http://localhost:8080/baocao/user/images/footer-logo.png"></a></div>
+                        <div class="footer_logo_1"><a href="index.html"><img
+                                 src="http://localhost:8080/baocao/user/images/footer-logo.png"></a></div>
                         <p class="dummy_text">commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
                      </div>
@@ -541,16 +388,16 @@
          </div>
          <!-- copyright section end -->
          <!-- Javascript files-->
-         <script src="js/jquery.min.js"></script>
-         <script src="js/popper.min.js"></script>
-         <script src="js/bootstrap.bundle.min.js"></script>
-         <script src="js/jquery-3.0.0.min.js"></script>
-         <script src="js/plugin.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/jquery.min.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/popper.min.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/bootstrap.bundle.min.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/jquery-3.0.0.min.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/plugin.js"></script>
          <!-- sidebar -->
-         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-         <script src="js/custom.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/jquery.mCustomScrollbar.concat.min.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/custom.js"></script>
          <!-- javascript -->
-         <script src="js/owl.carousel.js"></script>
+         <script src="http://localhost:8080/baocao/user/js/owl.carousel.js"></script>
          <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
          <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
          <script>

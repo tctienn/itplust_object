@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.CartService;
 import service.ProductService;
 
 /**
@@ -32,8 +33,11 @@ public class product extends HttpServlet {
 
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		ProductService productservice = new ProductService(); 
-		System.out.println(productservice.getProductPage(1, 2).size());
 		request.setAttribute("products", productservice.getProductPage(1, 2) );
+		CartService cartService = new CartService();
+		System.out.println("cartitem" + cartService.getCartItems(1).size());
+		request.setAttribute("cartItem", cartService.getCartItems(1) );
+		request.setAttribute("cartItemSize", cartService.getCartItems(1).size() );
 		request.getRequestDispatcher("user/index2.jsp").forward(request, response);
 	}
 

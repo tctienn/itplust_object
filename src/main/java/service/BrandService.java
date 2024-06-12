@@ -34,7 +34,9 @@ public class BrandService {
 	        }
 		}catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}finally {
+			
+	       }
 		
 		return brand;
 	}

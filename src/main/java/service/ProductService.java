@@ -13,6 +13,7 @@ import config.MyConnection;
 import model.BrandModel;
 import model.CatergoryModel;
 import model.ImagesModel;
+import model.ProductModel;
 import model.SizeModel;
 
 public class ProductService {
@@ -23,7 +24,7 @@ public class ProductService {
 	private SizeSevice sizeService = new SizeSevice();
 	private Connection connection;
 	private static final String SELECT_ALL_PRODUCT_PAGE = "SELECT * FROM product LIMIT ?, ?";
-	
+	private static final String FIND_BY_ID = "SELECT * FROM product where id = ?";
 
 	public ProductService() {
 //		connection = MyConnection.getConnection();
@@ -72,6 +73,39 @@ public class ProductService {
 		
 		
 		return productDTOs;
+	}
+	
+	public ProductModel findByid(Integer idProduct) {
+		
+		ProductModel product = new ProductModel();
+		try (Connection connection = MyConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID);) {
+			preparedStatement.setInt(1, idProduct);
+			ResultSet rs = preparedStatement.executeQuery();			
+			if (rs.next()) { 
+				Integer id = rs.getInt("id");
+				 String alisa = rs.getString("alias");
+				 String name = rs.getString("name");
+				 String mota = rs.getString("mota");
+				 String motaNgan= rs.getString("mota_ngan");
+				 Integer idBrand = rs.getInt("brand");
+				 Float cost = rs.getFloat("cost");
+				 Float price = rs.getFloat("gia");
+				 String mainImg = rs.getString("main_img");
+				 Date createAt = rs.getDate("create_at");
+				 int Start = rs.getInt("start");
+				 Date updateAt = rs.getDate("update_at");
+				 int enable = rs.getInt("enable");
+				 int inStock = rs.getInt("in_stock");
+	             product = new ProductModel(id, alisa, name, mota, motaNgan, idBrand, cost, price, mainImg, createAt, Start, updateAt, enable, inStock);
+	        }
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+	       }
+		
+		return product;
+		
 	}
 	
 }
