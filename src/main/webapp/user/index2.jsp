@@ -62,7 +62,19 @@
                   <form class="form-inline ">
                      <div class="login_text">
                         <ul>
-                           <li><a href="#"><img src="http://localhost:8080/baocao/user/images/user-icon.png"></a></li>
+                           <li>
+                           
+                           
+					         <c:choose>
+					            <c:when test="${not empty sessionScope.user}">
+					            <a href="#"><img src="http://localhost:8080/baocao/user/images/user-icon.png" title="${sessionScope.user.getUserName()}"></a>
+					
+					            </c:when>
+					            <c:otherwise>
+					                <a href="#"><img src="http://localhost:8080/baocao/user/images/user-icon.png" title="${sessionScope.user.getUserName()}"></a>
+					            </c:otherwise>
+					        </c:choose>
+                           </li>
                            <li>
                               <a href="#">
                                  <div style="position: relative !important;">
@@ -188,7 +200,18 @@
                   </div>
 
 
-                  <div class="seemore_bt"><a href="#">See More</a></div>
+                  <nav aria-label="Page navigation example">
+					  <ul class="pagination">
+					  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					  <c:forEach begin="1" end="${2}"  var="i" varStatus="ps">
+					   <li class="page-item"><a class="page-link" href="#">${i}</a></li>
+					   
+					  </c:forEach>
+					    
+					   
+					    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+					  </ul>
+					</nav>
                </div>
             </div>
          </div>
